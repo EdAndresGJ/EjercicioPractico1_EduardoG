@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/plantilla :: cabecera}"></head>
+
+<body class="d-flex flex-column min-vh-100">
+
+    <header th:replace="~{fragments/plantilla :: encabezado}"></header>
+
+    <nav th:replace="~{fragments/plantilla :: navegacion}"></nav>
+
+    <main class="flex-grow-1">
+
+        <section class="bg-light py-5">
+            <div class="container text-center">
+
+                <h2 class="display-5 fw-bold">
+                    Transforma tu cuerpo y tu vida
+                </h2>
+
+                <p class="lead">
+                    Descubre nuestras clases y entrena con nosotros.
+                </p>
+
+                <a class="btn btn-primary btn-lg"
+                   th:href="@{/servicios}">
+                    Ver clases
+                </a>
+
+            </div>
+        </section>
+
+        <section class="container py-5">
+
+            <div class="row align-items-center g-4">
+
+                <div class="col-md-6">
+
+                    <div class="card shadow">
+
+                        <div class="card-body">
+
+                            <span class="badge bg-danger mb-3">
+                                Nueva clase
+                            </span>
+
+                            <h3 class="card-title">
+                                CrossFit Funcional
+                            </h3>
+
+                            <p class="card-text">
+                                Mejora tu fuerza, resistencia y condición física
+                                mediante ejercicios funcionales de alta intensidad.
+                            </p>
+
+                            <p class="fw-bold text-primary">
+                                Precio por clase: ₡8 000
+                            </p>
+
+                            <a class="btn btn-success"
+                               th:href="@{/reservas/nueva}">
+                                Reservar clase
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+
+                    <h3 class="mb-3">
+                        Rutina destacada
+                    </h3>
+
+                    <div class="ratio ratio-16x9">
+
+                        <iframe
+                            src="https://www.youtube.com/embed/UBMk30rjy0o"
+                            title="Rutina de entrenamiento"
+                            allowfullscreen>
+                        </iframe>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="bg-primary text-white py-5">
+
+            <div class="container text-center">
+
+                <h2>Entrena con nosotros</h2>
+
+                <p class="lead mb-0">
+                    Contamos con clases de fuerza, cardio,
+                    flexibilidad y entrenamiento funcional.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer th:replace="~{fragments/plantilla :: pie}"></footer>
+
+    <script th:replace="~{fragments/plantilla :: scripts}"></script>
+
+</body>
+</html>
