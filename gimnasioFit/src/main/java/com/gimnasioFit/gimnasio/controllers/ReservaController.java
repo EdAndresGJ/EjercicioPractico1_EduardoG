@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import com.gimnasioFit.gimnasio.domain.Servicio;
 
 @Controller
 @RequestMapping("/reservas")
@@ -40,10 +41,13 @@ public class ReservaController {
         return "reserva/listado";
     }
 
-    @GetMapping("/nueva")
+   @GetMapping("/nueva")
     public String mostrarFormulario(Model model) {
-        model.addAttribute("reserva", new Reserva());
 
+        Reserva reserva = new Reserva();
+        reserva.setServicio(new Servicio());
+
+        model.addAttribute("reserva", reserva);
         model.addAttribute(
                 "servicios",
                 servicioService.listarServicios()

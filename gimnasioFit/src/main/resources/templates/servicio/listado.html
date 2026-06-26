@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/plantilla :: cabecera}"></head>
+
+<body class="d-flex flex-column min-vh-100">
+
+    <header th:replace="~{fragments/plantilla :: encabezado}"></header>
+
+    <nav th:replace="~{fragments/plantilla :: navegacion}"></nav>
+
+    <main class="container py-5 flex-grow-1">
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+
+            <h2>Clases y servicios</h2>
+
+            <a class="btn btn-primary"
+               th:href="@{/servicios/nuevo}">
+                Agregar clase
+            </a>
+
+        </div>
+
+        <div class="alert alert-info"
+             th:if="${#lists.isEmpty(servicios)}">
+            No existen clases registradas.
+        </div>
+
+        <div class="table-responsive"
+             th:unless="${#lists.isEmpty(servicios)}">
+
+            <table class="table table-striped table-bordered align-middle">
+
+                <thead class="table-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Categoría</th>
+                        <th class="text-center">Acciones</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr th:each="servicio : ${servicios}">
+
+                        <td th:text="${servicio.id}"></td>
+
+                        <td th:text="${servicio.nombre}"></td>
+
+                        <td th:text="${'₡' + servicio.precio}"></td>
+
+                        <td th:text="${servicio.categoria.nombre}"></td>
+
+                        <td class="text-center">
+
+                            <a class="btn btn-warning btn-sm"
+                               th:href="@{/servicios/editar/{id}(id=${servicio.id})}">
+                                Editar
+                            </a>
+
+                            <a class="btn btn-danger btn-sm"
+                               th:href="@{/servicios/eliminar/{id}(id=${servicio.id})}">
+                                Eliminar
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </main>
+
+    <footer th:replace="~{fragments/plantilla :: pie}"></footer>
+
+    <script th:replace="~{fragments/plantilla :: scripts}"></script>
+
+</body>
+</html>

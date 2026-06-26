@@ -7,6 +7,7 @@ package com.gimnasioFit.gimnasio.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class InicioController {
@@ -19,5 +20,10 @@ public class InicioController {
     @GetMapping("/contacto")
     public String mostrarContacto() {
         return "contacto";
+    }
+    
+    @PostMapping("/contacto/guardar")
+public String guardarContacto() {
+    return "redirect:/";
     }
 }

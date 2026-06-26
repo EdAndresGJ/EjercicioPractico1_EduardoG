@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import com.gimnasioFit.gimnasio.domain.Categoria;
 
 @Controller
 @RequestMapping("/servicios")
@@ -42,12 +43,15 @@ public class ServicioController {
 
     @GetMapping("/nuevo")
     public String mostrarFormulario(Model model) {
-        model.addAttribute("servicio", new Servicio());
 
+        Servicio servicio = new Servicio();
+        servicio.setCategoria(new Categoria());
+
+        model.addAttribute("servicio", servicio);
         model.addAttribute(
                 "categorias",
                 categoriaService.listarCategorias()
-        );
+    );
 
         return "servicio/formulario";
     }
